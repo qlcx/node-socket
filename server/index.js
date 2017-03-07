@@ -24,7 +24,7 @@ if (process.env.NODE_ENV == 'prod') {
 }
 
 app.use(logger())   
-app.use(views(path.join(__dirname, '../dist/')))
+app.use(views(path.join(__dirname, './views/')))
 app.use(async(ctx) => {
     if (process.env.NODE_ENV == 'prod') {
         await ctx.render('index_prod')

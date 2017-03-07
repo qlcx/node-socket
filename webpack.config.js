@@ -8,8 +8,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './index.js'
   ],
-    context: resolve(__dirname, 'app'),
-
+  context: resolve(__dirname, 'app'),
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
