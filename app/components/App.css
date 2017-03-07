@@ -2,5 +2,6 @@
     text-size-adjust: none;
     font-family: helvetica, arial, sans-serif;
     line-height: 200%;
-    padding: 6px 20px 30px;
+    padding: 6px 20px 100px;
+    font-size: 20px
 }

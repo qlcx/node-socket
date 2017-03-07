@@ -4,12 +4,10 @@ const koaStatic = require('koa-static')
 const views = require('koa-views')
 const path = require('path')
 
-const webpack = require('webpack')
-const webpackConf = require('../webpack.config')
-
-
 const app = new Koa()
 
+// const webpack = require('webpack')
+// const webpackConf = require('../webpack.config')
 // const WebpackDevServer = require('webpack-dev-server')
 // if (process.env.NODE_ENV != 'prod') {
 //     let webpackDevServer = new WebpackDevServer(webpack(webpackConf), webpackConf.devServer)
@@ -18,12 +16,11 @@ const app = new Koa()
 //     })
 // } else {
 //     // webpack-dev-server serves all static assets from memory in development mode
-//     app.use(koaStatic(path.join(__dirname, './static/dist/')))    
+//     app.use(koaStatic(path.join(__dirname, '../dist/')))    
 // }
 
-app.use(logger())
-app.use(koaStatic(path.join(__dirname, '../dist/')))    
-app.use(views(path.join(__dirname, '../dist/views')))
+app.use(logger())   
+app.use(views(path.join(__dirname, '../dist/')))
 app.use(async(ctx) => {
     await ctx.render('index')
 })
