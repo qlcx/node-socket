@@ -19,16 +19,24 @@ const app = new Koa()
 //     app.use(koaStatic(path.join(__dirname, '../dist/')))    
 // }
 
+if (process.env.NODE_ENV == 'prod') {
+    app.use(koaStatic(path.join(__dirname, '../dist/')))
+}
+
 app.use(logger())   
 app.use(views(path.join(__dirname, '../dist/')))
 app.use(async(ctx) => {
-    await ctx.render('index')
+    if (process.env.NODE_ENV == 'prod') {
+        await ctx.render('index_prod')
+    } else {
+        await ctx.render('index_dev')
+    }
 })
 
-// const server = require('http').createServer(app.callback())
-// const io = require('socket.io')(server)
-// io.on('connection', () => {
-//     console.log('connect')
-// })
+const server = require('http').createServer(app.callback())
+const io = require('socket.io')(server)
+io.on('connection', () => {
+    console.log('connect')
+})
 
-app.listen(7000)
+server.listen(7000)

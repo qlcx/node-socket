@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --inline",
-    "start-server": "nodemon ./server/index.js"
+    "start-koa": "nodemon ./server/index.js",
+    "dev": "webpack-dev-server --inline & NODE_ENV=dev npm run start-koa",
+    "prod": "webpack && NODE_ENV=prod npm run start-koa"
   },
   "dependencies": {
     "koa": "^2.0.1",
@@ -14,7 +15,9 @@
     "koa-views": "^6.0.0",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
