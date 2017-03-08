@@ -10,6 +10,9 @@ class App extends Component {
     io.on('connectToRoom', data => {
       console.log(data)
     })
+    io.on('message', message => {
+        console.log(message)
+    })
   }
 
   render() {
